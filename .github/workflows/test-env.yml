@@ -12,13 +12,11 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 8
-      - name: Package jar
-        run: |
-          mvn -X clean package -e
-        env: 
-          GITHUB_ACTOR: ${{ vars.NEW_ACTOR }}
-      - name: echo env variables
+      - name: test env vars
         run: |
           echo $GITHUB_ACTOR
+        env: 
+          GITHUB_ACTOR: ${{ vars.NEW_ACTOR }}
+          
         
   
