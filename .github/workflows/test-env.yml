@@ -12,11 +12,17 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 8
-      - name: test env vars
+      - name: override default env vars
+        run: |
+          echo "GITHUB_ACTOR=${{ vars.NEW_ACTOR }}" >> $GITHUB_ENV
+      - name: test override vars
         run: |
           echo $GITHUB_ACTOR
+      - name: test env vars
+        run: | 
+          echo $GITHUB_ACTOR
         env: 
-          GITHUB_ACTOR: ${{ vars.NEW_ACTOR }}
+          GITHUB_ACTOR: shouldnt override
           
         
   
