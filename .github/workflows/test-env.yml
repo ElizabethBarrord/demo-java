@@ -27,6 +27,9 @@ jobs:
           echo $GITHUB_ACTOR
         env: 
           GITHUB_ACTOR: shouldnt-override
-          
+      - name: test export
+        run: |
+          export GITHUB_ACTOR="${{ vars.NEW_ACTOR }}"
+          echo $GITHUB_ACTOR
         
   
