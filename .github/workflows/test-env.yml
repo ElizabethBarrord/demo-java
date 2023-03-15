@@ -17,12 +17,16 @@ jobs:
           echo "GITHUB_ACTOR=${{ vars.NEW_ACTOR }}" >> $GITHUB_ENV
       - name: test override vars
         run: |
+          echo "expect elizabeth-as-env-variable"
           echo $GITHUB_ACTOR
+        env:
+          GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
       - name: test env vars
         run: | 
+          echo "expect ElizabethBarrord"
           echo $GITHUB_ACTOR
         env: 
-          GITHUB_ACTOR: shouldnt override
+          GITHUB_ACTOR: shouldnt-override
           
         
   
